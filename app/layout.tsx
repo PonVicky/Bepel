@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Bepel - Creative Builders",
   description: "We design and build lovable digital products, brands, and experiences.",
   icons: {
-    icon: "/bepelLogo.svg",
+    icon: "/favicon.svg",
   },
 };
 

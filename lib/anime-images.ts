@@ -6,6 +6,7 @@ export const ANIME_IMAGES = [
   "/images/animate_images/5.png",
   "/images/animate_images/6.png",
   "/images/animate_images/7.png",
+  "/images/animate_images/t.png",
   "/images/animate_images/8.png",
   "/images/animate_images/11.png",
   "/images/animate_images/12.png",

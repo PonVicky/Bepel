@@ -23,10 +23,10 @@ export default function Navbar() {
             <div className="pointer-events-auto">
                 <Link href="/">
                     <Image
-                        src="/images/logos/bepelLogosvg.svg"
+                        src="/bepellogo.svg"
                         alt="Bepel Logo"
-                        width={80}
-                        height={80}
+                        width={50}
+                        height={50}
                         style={{ height: "auto" }}
                     />
                 </Link>

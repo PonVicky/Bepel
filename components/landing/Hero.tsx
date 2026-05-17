@@ -5,8 +5,37 @@ import VerticalCutReveal from '../fancy/text/vertical-cut-reveal';
 import { ImageTrail } from '../ui/image-trail';
 import { ANIME_IMAGES } from '@/lib/anime-images';
 
+const fire = "/images/animate_images/fire.png";
+
+// const TICKER_TAGS = [
+//   "🧠 Ideas",
+//   "💻 Web Apps",
+//   "⚡ Build Better",
+//   "🤖 AI",
+//   "🎨 Create",
+//   "🚀 Ship Fast",
+//   "🌍 Think Big",
+//   "📦 SaaS",
+//   "📈 Launch",
+//   "✏️ Design"
+// ];
+
+const TICKER_TAGS = [
+  { emoji: "🧠", text: "Ideas", },
+  { emoji: "💻", text: "Web Apps", },
+  { emoji: "⚡", text: "Build Better", },
+  { emoji: "🤖", text: "AI", },
+  { emoji: "🎨", text: "Create", },
+  { emoji: "🚀", text: "Ship Fast", },
+  { emoji: "🌍", text: "Think Big", },
+  { emoji: "📦", text: "SaaS", },
+  { emoji: "📈", text: "Launch", },
+  { emoji: "✏️", text: "Design", },
+];
+
 export default function Hero() {
   const [isDesktop, setIsDesktop] = React.useState(false);
+  const doubledTags = [...TICKER_TAGS, ...TICKER_TAGS];
 
   React.useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
@@ -17,7 +46,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 pt-32 pb-16 overflow-hidden bg-canvas-white">
-      {/* Image Trail Background - Only on Desktop */}
       {isDesktop && (
         <div className="absolute inset-0 pointer-events-none z-0 hidden md:block">
           <ImageTrail
@@ -31,7 +59,6 @@ export default function Hero() {
       )}
 
       <div className="relative z-10 max-w-[1440px] mx-auto w-full">
-        {/* Top Header Section */}
         <div className="flex flex-col-reverse md:flex-row items-start justify-between mb-12 md:mb-20">
           <div></div>
           <div className="max-w-[600px] mb-8 md:mb-0 md:text-right flex flex-col md:items-end">
@@ -47,10 +74,45 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Main Display Typography */}
+        {/* Floating Vertical Infinite Scroll Ticker */}
+        <div className="absolute right-0 top-[110px] hidden lg:block h-[240px] w-[180px] overflow-hidden pointer-events-auto z-20">
+          <div className="flex flex-col items-end gap-3 py-4 animate-infinite-scroll-y hover:[animation-play-state:paused] cursor-pointer">
+
+            {doubledTags.map((tag, idx) => (
+              <div
+                key={idx}
+                className="
+                    text-center
+                    px-3 py-1.5
+                    rounded-[10px]
+                    border border-deep-graphite/10
+                    bg-white/60
+                    text-[11px]
+                    font-medium
+                    tracking-wider
+                    text-deep-graphite
+                    transition-all duration-300
+                    hover:bg-deep-graphite
+                    hover:text-[#f2f2f2]
+                    hover:border-deep-graphite
+                    flex items-center gap-1.5 justify-center
+                  "
+              >
+                <span className="text-[16px] leading-none">
+                  {tag.emoji}
+                </span>
+
+                <span>
+                  {tag.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="relative mb-16 md:mb-32">
           <h1 className="flex flex-col animate-reveal delay-4 -mt-4 md:-mt-10">
-            <span className="text-[52px] xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-deep-graphite">
+            <span className="text-[52px] font-semibold xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-deep-graphite">
               <VerticalCutReveal
                 splitBy="characters"
                 staggerDuration={0.025}
@@ -65,11 +127,16 @@ export default function Hero() {
                 Design
               </VerticalCutReveal>
             </span>
-            <div className="flex items-baseline gap-2 md:gap-30 lg:gap-82 -mt-2 md:-mt-10 lg:-mt-20">
+            <div className="flex items-baseline gap-2 md:gap-3 lg:gap-10 -mt-2 md:-mt-10 lg:-mt-20">
               <span className="text-[52px] xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-soft-gray-highlight">
                 &
               </span>
-              <span className="text-[52px] xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-deep-graphite">
+              <img
+                src={fire}
+                alt="fire"
+                className="w-12 h-12 xs:w-16 xs:h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-[230px] lg:h-[230px] object-contain self-center"
+              />
+              <span className="text-[52px] font-semibold xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-deep-graphite">
                 <VerticalCutReveal
                   splitBy="characters"
                   staggerDuration={0.025}
@@ -89,27 +156,28 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Bottom Section */}
-        <div className="mt-8 md:mt-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-10 md:gap-12">
-          <div className="max-w-[500px] animate-reveal delay-5">
-            <p className="text-[18px] md:text-[20px] lg:text-heading-sm mb-6 md:mb-8 leading-tight text-deep-graphite font-aftenscreen">
-              BASED IN DUBAI, WORKING GLOBALLY. WE HELP STARTUPS AND ENTERPRISES BUILD PRODUCTS THAT PEOPLE LOVE.
-            </p>
+        <div className="mt-8 md:mt-20 flex flex-col md:flex-row items-stretch justify-between border-t border-deep-graphite/20 pt-8 md:pt-12 gap-8 md:gap-0">
+          <div className="max-w-[500px] animate-reveal delay-5 flex flex-col justify-start">
+            <p className="text-[18px] md:text-[20px] lg:text-heading-sm leading-tight text-deep-graphite font-aftenscreen">
+              BUILDING DIGITAL PRODUCTS,
+              WEB EXPERIENCES,
+              AND BIG IDEAS
+              THAT DESERVE TO EXIST.            </p>
           </div>
 
-          <div className="animate-reveal delay-5 w-full md:w-auto">
-            <div className="flex flex-wrap gap-8 md:gap-12 text-caption uppercase tracking-widest text-medium-gray-highlight">
-              <div className="flex-1 min-w-[100px] md:min-w-[80px]">
+          <div className="animate-reveal delay-5 w-full md:w-[60%] lg:w-auto flex flex-col justify-end md:border-l md:border-deep-graphite/20 md:pl-10 lg:pl-16 pt-8 md:pt-0 border-t border-deep-graphite/20 md:border-t-0">
+            <div className="flex items-center flex-nowrap gap-10 md:gap-16 lg:gap-24 text-caption uppercase tracking-widest text-medium-gray-highlight mb-1">
+              <div className="min-w-max">
                 <p className="text-deep-graphite mb-1 md:mb-2">01</p>
-                <p>Deep Work</p>
+                <p>IDEAS FIRST</p>
               </div>
-              <div className="flex-1 min-w-[100px] md:min-w-[80px]">
-                <p className="text-deep-graphite mb-1 md:mb-2">02</p>
-                <p>Visual Flow</p>
+              <div className="min-w-max">
+                <p className="text-deep-graphite mb-1 md:mb-2">02 BUILD</p>
+                <p>WITH INTENTION</p>
               </div>
-              <div className="flex-1 min-w-[100px] md:min-w-[80px]">
-                <p className="text-deep-graphite mb-1 md:mb-2">03</p>
-                <p>Discipline</p>
+              <div className="min-w-max">
+                <p className="text-deep-graphite mb-1 md:mb-2">03 SHIP</p>
+                <p>WITHOUT FEAR</p>
               </div>
             </div>
           </div>

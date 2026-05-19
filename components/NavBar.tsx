@@ -4,10 +4,17 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import LetterSwapForward from "./fancy/text/letter-swap-forward-anim";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrollPercent, setScrollPercent] = useState(0);
+    const { scrollYProgress } = useScroll();
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        setScrollPercent(Math.round(latest * 100));
+    });
 
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
@@ -79,8 +86,8 @@ export default function Navbar() {
                             <button className="text-white/80 hover:text-white transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
                             </button>
-                            <div className="bg-white/10 px-2.5 py-1 rounded-full">
-                                <span className="text-white text-[10px] font-bold">0%</span>
+                            <div className="bg-[#333333] px-3 py-1.5 rounded-full min-w-[46px] flex justify-center items-center">
+                                <span className="text-white text-[11px] font-bold tracking-wide">{scrollPercent}%</span>
                             </div>
                         </div>
                     </div>

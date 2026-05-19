@@ -7,19 +7,6 @@ import { ANIME_IMAGES } from '@/lib/anime-images';
 
 const fire = "/images/animate_images/fire.png";
 
-// const TICKER_TAGS = [
-//   "🧠 Ideas",
-//   "💻 Web Apps",
-//   "⚡ Build Better",
-//   "🤖 AI",
-//   "🎨 Create",
-//   "🚀 Ship Fast",
-//   "🌍 Think Big",
-//   "📦 SaaS",
-//   "📈 Launch",
-//   "✏️ Design"
-// ];
-
 const TICKER_TAGS = [
   { emoji: "🧠", text: "Ideas", },
   { emoji: "💻", text: "Web Apps", },
@@ -168,7 +155,7 @@ export default function Hero() {
           <div className="animate-reveal delay-5 w-full md:w-[60%] lg:w-auto flex flex-col justify-end md:border-l md:border-deep-graphite/20 md:pl-10 lg:pl-16 pt-8 md:pt-0 border-t border-deep-graphite/20 md:border-t-0">
             <div className="flex items-center flex-nowrap gap-10 md:gap-16 lg:gap-24 text-caption uppercase tracking-widest text-medium-gray-highlight mb-1">
               <div className="min-w-max">
-                <p className="text-deep-graphite mb-1 md:mb-2">01</p>
+                <p className="text-deep-graphite mb-1 md:mb-2">01 CREATE</p>
                 <p>IDEAS FIRST</p>
               </div>
               <div className="min-w-max">

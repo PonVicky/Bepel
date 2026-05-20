@@ -1,6 +1,7 @@
 import Navbar from "@/components/NavBar";
 import Hero from "@/components/landing/Hero";
 import WhatWeDo from "@/components/landing/WhatWeDo";
+import Footer from "@/components/landing/Footer";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <WhatWeDo />
+      <Footer />
     </main>
   );
 }

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import TargetCursor from "../ui/TargetCursor";
-
+import MediaBetweenText from "../fancy/blocks/media-between-text";
 
 export default function WhatWeDo() {
   return (
@@ -25,9 +25,31 @@ export default function WhatWeDo() {
             CORE EXPERTISE
           </span>
         </div>
-        <h2 className="text-[64px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-aftenscreen font-black leading-[0.8] tracking-tighter text-deep-graphite uppercase">
+        {/* Static Heading for Mobile & Tablet (No animation, optimized performance) */}
+        <h2 className="block md:hidden text-[56px] sm:text-[80px] font-aftenscreen font-black leading-[0.8] tracking-tighter text-deep-graphite uppercase">
           WHAT WE DO
         </h2>
+
+        {/* Animated Heading for Desktop & Laptops */}
+        <MediaBetweenText
+          firstText="WHAT"
+          secondText=" WE DO"
+          mediaUrl="/images/animate_images/6.png"
+          mediaType="image"
+          triggerType="hover"
+          as="span"
+          className="hidden md:flex flex-row items-center whitespace-nowrap flex-nowrap md:text-[90px] lg:text-[130px] xl:text-[170px] 2xl:text-[180px] font-aftenscreen font-black leading-[0.8] tracking-tighter text-deep-graphite uppercase  select-none"
+          mediaContainerClassName="overflow-hidden rounded-xl md:rounded-[24px] mx-2 md:mx-4 h-[0.85em] self-center"
+          animationVariants={{
+            initial: { width: 0, opacity: 0, scale: 0.8 },
+            animate: {
+              width: "1em",
+              opacity: 1,
+              scale: 1,
+              transition: { duration: 0.4, type: "spring", bounce: 0 },
+            },
+          }}
+        />
       </div>
 
       {/* Bento Grid */}
@@ -47,6 +69,7 @@ export default function WhatWeDo() {
               src="/images/WhatWeDo/buildProducts.png"
               alt="Build Products"
               fill
+              draggable={false}
               className="object-cover object-left-top "
             />
           </div>
@@ -95,6 +118,7 @@ export default function WhatWeDo() {
               src="/images/WhatWeDo/webApplications.png"
               alt="Web Applications Dashboard"
               fill
+              draggable={false}
               className="object-contain transition-transform "
             />
           </div>
@@ -131,6 +155,7 @@ export default function WhatWeDo() {
               src="/images/WhatWeDo/shipFast.png"
               alt="Ship Fast Dashboard"
               fill
+              draggable={false}
               className="object-contain object-top transition-transform "
             />
           </div>
@@ -178,6 +203,7 @@ export default function WhatWeDo() {
               src="/images/WhatWeDo/growingBepel.png"
               alt="Growing Bepel Abstract"
               fill
+              draggable={false}
               className="object-cover object-bottom transition-transform "
             />
           </div>

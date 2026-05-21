@@ -99,12 +99,12 @@ export default function Hero() {
 
         <div className="relative mb-16 md:mb-32">
           <h1 className="flex flex-col animate-reveal delay-4 -mt-4 md:-mt-10">
-            <span className="text-[52px] font-semibold xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-deep-graphite">
+            <span className="text-[42px] xs:text-[48px] sm:text-[64px] md:text-[90px] lg:text-[120px] xl:text-[160px] 2xl:text-[180px] font-semibold font-aftenscreen leading-[0.95] tracking-tight md:tracking-display text-deep-graphite">
               <VerticalCutReveal
                 splitBy="characters"
                 staggerDuration={0.025}
                 staggerFrom="first"
-                wordLevelClassName="py-4 md:py-12"
+                wordLevelClassName="py-2 md:py-8 lg:py-10"
                 transition={{
                   type: "spring",
                   stiffness: 200,
@@ -114,21 +114,21 @@ export default function Hero() {
                 Design
               </VerticalCutReveal>
             </span>
-            <div className="flex items-baseline gap-2 md:gap-3 lg:gap-10 -mt-2 md:-mt-10 lg:-mt-20">
-              <span className="text-[52px] xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-soft-gray-highlight">
+            <div className="flex items-center flex-wrap md:flex-nowrap gap-2 md:gap-3 lg:gap-8 -mt-2 md:-mt-8 lg:-mt-12">
+              <span className="text-[42px] xs:text-[48px] sm:text-[64px] md:text-[90px] lg:text-[120px] xl:text-[160px] 2xl:text-[180px] font-aftenscreen leading-[0.95] tracking-tight md:tracking-display text-soft-gray-highlight">
                 &
               </span>
               <img
                 src={fire}
                 alt="fire"
-                className="w-12 h-12 xs:w-16 xs:h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-[230px] lg:h-[230px] object-contain self-center"
+                className="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 xl:w-[140px] xl:h-[140px] 2xl:w-[160px] 2xl:h-[160px] object-contain self-center"
               />
-              <span className="text-[52px] font-semibold xs:text-[64px] sm:text-[100px] md:text-[140px] lg:text-display font-aftenscreen leading-[0.8] tracking-tight md:tracking-display text-deep-graphite">
+              <span className="text-[42px] xs:text-[48px] sm:text-[64px] md:text-[90px] lg:text-[120px] xl:text-[160px] 2xl:text-[180px] font-semibold font-aftenscreen leading-[0.95] tracking-tight md:tracking-display text-deep-graphite">
                 <VerticalCutReveal
                   splitBy="characters"
                   staggerDuration={0.025}
                   staggerFrom="first"
-                  wordLevelClassName="py-4 md:py-12 px-1 md:px-2"
+                  wordLevelClassName="py-2 md:py-8 lg:py-10 px-1"
                   transition={{
                     type: "spring",
                     stiffness: 200,

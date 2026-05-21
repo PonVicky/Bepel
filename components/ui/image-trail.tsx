@@ -35,9 +35,20 @@ export function ImageTrail({
         const handleMouseMove = (e: MouseEvent) => {
             const rect = contentRef.current?.getBoundingClientRect()
             if (rect) {
-                mousePos.current = {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
+                const isInside = 
+                    e.clientX >= rect.left &&
+                    e.clientX <= rect.right &&
+                    e.clientY >= rect.top &&
+                    e.clientY <= rect.bottom;
+
+                if (isInside) {
+                    mousePos.current = {
+                        x: e.clientX - rect.left,
+                        y: e.clientY - rect.top,
+                    }
+                } else {
+                    // Set mousePos to last mouse position to keep distance 0 and stop spawning
+                    mousePos.current = { ...lastMousePos.current }
                 }
             }
         }

@@ -25,44 +25,45 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-[100] px-6 py-6 flex items-start justify-between pointer-events-none">
+        <nav className="fixed top-0 left-0 right-0 z-[100] px-3 py-3 md:px-8 md:py-6 flex items-start justify-between pointer-events-none">
             {/* Left: Logo */}
             <div className="pointer-events-auto">
                 <Link href="/">
                     <Image
                         src="/bepelLogo.svg"
                         alt="Bepel Logo"
-                        width={50}
-                        height={50}
+                        width={36}
+                        height={36}
+                        className="w-[34px] h-[34px] md:w-[48px] md:h-[48px]"
                         style={{ height: "auto" }}
                     />
                 </Link>
             </div>
 
-            {/* Center: Action Pill & Expandable Menu */}
-            <div className="absolute left-1/2 -translate-x-1/2 pointer-events-auto">
+            {/* Center/Right: Action Pill & Expandable Menu */}
+            <div className="relative md:absolute md:left-1/2 md:-translate-x-1/2 pointer-events-auto">
                 <div
                     className={`
             relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden
-            ${isOpen ? "w-[256px] h-[540px] rounded-[32px] bg-[#D6D6D6] shadow-2xl py-4 px-1 flex flex-col" : "w-[240px] h-[48px] rounded-[24px] bg-black shadow-lg p-1"}
+            ${isOpen ? "w-[256px] h-[540px] rounded-[32px] bg-[#D6D6D6] shadow-2xl py-4 px-1 flex flex-col" : "w-[188px] md:w-[240px] h-[40px] md:h-[48px] rounded-[20px] md:rounded-[24px] bg-black shadow-lg p-1"}
           `}
                 >
                     {/* Internal Pill Bar (Always at top) */}
                     <div
                         className={`
               flex items-center justify-between shrink-0
-              ${isOpen ? "bg-black rounded-full py-1 mx-3 h-[48px] w-auto" : "h-full px-2 w-full"}
+              ${isOpen ? "bg-black rounded-full py-1 mx-3 h-[48px] w-auto" : "h-full px-1 md:px-2 w-full"}
             `}
                     >
                         {/* Menu/Close Toggle */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="flex items-center hover:cursor-pointer gap-2 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors group"
+                            className="flex items-center hover:cursor-pointer gap-1 md:gap-2 px-1.5 md:px-3 py-1 rounded-full hover:bg-white/10 transition-colors group"
                         >
                             {isOpen ? (
                                 <>
-                                    <div className="relative w-4 ml-2 h-4 flex items-center justify-center">
-                                        <X size={24} color="white" />
+                                    <div className="relative w-4 ml-1 md:ml-2 h-4 flex items-center justify-center">
+                                        <X size={20} color="white" className="md:w-6 md:h-6" />
                                     </div>
                                     <span className="text-white text-xs font-medium">
                                         <LetterSwapForward label="Close" staggerDuration={0.02} />
@@ -70,11 +71,11 @@ export default function Navbar() {
                                 </>
                             ) : (
                                 <>
-                                    <div className="flex flex-col gap-1 ">
-                                        <span className="w-4 h-0.5 bg-white"></span>
-                                        <span className="w-4 h-0.5 bg-white"></span>
+                                    <div className="flex flex-col gap-0.5 ml-1">
+                                        <span className="w-3 h-0.5 bg-white"></span>
+                                        <span className="w-3 h-0.5 bg-white"></span>
                                     </div>
-                                    <span className="text-white text-xs font-medium">
+                                    <span className="text-white text-[10px] md:text-xs font-medium">
                                         <LetterSwapForward label="Menu" staggerDuration={0.02} />
                                     </span>
                                 </>
@@ -82,12 +83,10 @@ export default function Navbar() {
                         </button>
 
                         {/* Icons Section */}
-                        <div className="flex items-center gap-4 px-2">
-                            <button className="text-white/80 hover:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
-                            </button>
-                            <div className="bg-[#333333] px-3 py-1.5 rounded-full min-w-[46px] flex justify-center items-center">
-                                <span className="text-white text-[11px] font-bold tracking-wide">{scrollPercent}%</span>
+                        <div className="flex items-center gap-1.5 md:gap-4 px-1 md:px-2">
+
+                            <div className="bg-[#333333] px-1.5 md:px-3 py-0.5 md:py-1 rounded-full min-w-[34px] md:min-w-[46px] flex justify-center items-center">
+                                <span className="text-white text-[9px] md:text-[11px] font-bold tracking-wide">{scrollPercent}%</span>
                             </div>
                         </div>
                     </div>
@@ -141,7 +140,7 @@ export default function Navbar() {
             </div>
 
             {/* Right: Actions */}
-            <div className="flex items-center gap-4 pointer-events-auto">
+            <div className="hidden md:flex items-center gap-4 pointer-events-auto">
                 <button className="bg-black hover:cursor-pointer text-white px-5 py-2.5 rounded-full text-xs font-bold hover:opacity-80 transition-opacity flex items-center justify-center min-w-[100px]">
                     <LetterSwapForward label="Contact us" staggerDuration={0.02} />
                 </button>

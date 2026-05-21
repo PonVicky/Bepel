@@ -7,19 +7,19 @@ import MagnetLines from '@/components/MagnetLines';
 
 export default function Footer() {
   return (
-    <footer className=" bg-[#F5F5F5] rounded-t-[32px] p-6 md:p-12 pb-0 flex flex-col justify-between overflow-hidden shadow-sm">
+    <footer className=" bg-[#F5F5F5] rounded-t-[32px] p-6 md:p-12 md:pb-0 flex flex-col justify-between overflow-hidden shadow-sm">
       {/* Top Section: Logo & Nav columns */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-12">
         {/* Left: Logo & Brand Name */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <Image
             src="/bepelLogo.svg"
             alt="Bepel Logo"
-            width={40}
-            height={40}
-            className="w-10 h-10 object-contain"
+            width={56}
+            height={56}
+            className="w-14 h-14 object-contain"
           />
-          <span className="text-3xl font-aftenscreen font-black tracking-tight text-deep-graphite">Bepel</span>
+          <span className="text-5xl pb-2 font-aftenscreen font-black tracking-tight text-deep-graphite">Bepel</span>
         </div>
 
         {/* Right: Columns */}
@@ -68,11 +68,11 @@ export default function Footer() {
         <div>Based in Madurai. Building globally.</div>
       </div>
 
-      <div className="-mx-6 md:-mx-12 mt-12 overflow-hidden w-[calc(100%+3rem)] md:w-[calc(100%+6rem)]">
+      <div className="hidden md:block -mx-6 md:-mx-12 mt-12 overflow-hidden w-[calc(100%+3rem)] md:w-[calc(100%+6rem)]">
         <MagnetLines
           rows={7}
           columns={28}
-          lineColor="#A3A3A3"
+          lineColor="#222222"
           lineWidth="2px"
           lineHeight="20px"
           baseAngle={-10}

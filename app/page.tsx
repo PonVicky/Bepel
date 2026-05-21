@@ -1,6 +1,7 @@
 import Navbar from "@/components/NavBar";
 import Hero from "@/components/landing/Hero";
 import WhatWeDo from "@/components/landing/WhatWeDo";
+import Products from "@/components/landing/Products";
 import Footer from "@/components/landing/Footer";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <WhatWeDo />
+      <Products />
       <Footer />
     </main>
   );

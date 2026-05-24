@@ -1,4 +1,4 @@
-import type { Metadata, MetadataRoute } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -69,7 +69,23 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Bepel",
+              url: "https://bepel.in",
+              logo: "https://bepel.in/favicon.svg",
+              description: "Creative Builders",
+            }),
+          }}
+        />
+
+        {children}
+      </body>
     </html>
   );
 }

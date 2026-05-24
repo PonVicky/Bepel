@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, MetadataRoute } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,16 +12,51 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata: Metadata = {
-  title: "Bepel - Creative Builders",
-  description: "Bepel official website. Explore products and innovations from Bepel.",
+  metadataBase: new URL("https://bepel.in"),
+
+  title: "Bepel | Creative Builders",
+
+  description:
+    "Bepel official website. Creative builders crafting innovative products and experiences.",
+
   keywords: [
     "Bepel",
     "bepl",
     "beepel",
     "Bepel official",
-    "Bepel India",
+    "Creative Builders",
   ],
+
+  openGraph: {
+    type: "website",
+    url: "https://bepel.in",
+    siteName: "Bepel",
+
+    title: "Bepel | Creative Builders",
+
+    description:
+      "Creative builders crafting innovative products and experiences.",
+
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Bepel",
+      },
+    ],
+  },
+
+  icons: {
+    icon: "/favicon.svg",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

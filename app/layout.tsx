@@ -14,7 +14,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bepel - Creative Builders",
-  description: "We design and build lovable digital products, brands, and experiences.",
+  description: "Bepel official website. Explore products and innovations from Bepel.",
+  keywords: [
+    "Bepel",
+    "bepl",
+    "beepel",
+    "Bepel official",
+    "Bepel India",
+  ],
 };
 
 export default function RootLayout({

@@ -27,9 +27,12 @@ export default function Footer() {
           {/* Column 1 */}
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-2">
-              <span className="font-bold text-deep-graphite">PDP's</span>
-              <Link href="#" className="text-deep-graphite/80 hover:text-deep-graphite font-semibold transition-colors">
-                Videos
+              <span className="font-bold text-deep-graphite">Studio</span>
+              <Link href="/about" className="text-deep-graphite/80 hover:text-deep-graphite font-semibold transition-colors">
+                About
+              </Link>
+              <Link href="/products" className="text-deep-graphite/80 hover:text-deep-graphite font-semibold transition-colors">
+                Products
               </Link>
             </div>
             <div className="flex flex-col gap-1.5 text-[12px] text-deep-graphite/50 font-medium">
@@ -48,14 +51,22 @@ export default function Footer() {
           {/* Column 2 */}
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-2">
-              <span className="font-bold text-deep-graphite">Products</span>
-              <Link href="#" className="text-deep-graphite/80 hover:text-deep-graphite font-semibold transition-colors">
-                Our features
+              <span className="font-bold text-deep-graphite">Connect</span>
+              <Link
+                href="https://stroky.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-deep-graphite/80 hover:text-deep-graphite font-semibold transition-colors"
+              >
+                Stroky
               </Link>
             </div>
             <div className="flex flex-col gap-1.5 text-[12px] text-deep-graphite/50 font-medium">
               <Link href="#" className="hover:text-deep-graphite transition-colors">
                 Instagram
+              </Link>
+              <Link href="/contact" className="hover:text-deep-graphite transition-colors">
+                Contact
               </Link>
             </div>
           </div>

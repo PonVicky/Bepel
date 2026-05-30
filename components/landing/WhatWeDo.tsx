@@ -1,20 +1,27 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import TargetCursor from "../ui/TargetCursor";
 import MediaBetweenText from "../fancy/blocks/media-between-text";
 
 export default function WhatWeDo() {
+  // Guard TargetCursor to client-only to prevent hydration mismatch
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section id="what-we-do-section" className="px-6 py-24 md:py-32 w-full max-w-[1440px] mx-auto bg-canvas-white relative z-10">
-      <TargetCursor
-        containerSelector="#what-we-do-section"
-        spinDuration={2}
-        hideDefaultCursor
-        parallaxOn
-        hoverDuration={0.2}
-      />
+      {mounted && (
+        <TargetCursor
+          containerSelector="#what-we-do-section"
+          spinDuration={2}
+          hideDefaultCursor
+          parallaxOn
+          hoverDuration={0.2}
+        />
+      )}
       <div className="mb-16  md:mb-24 flex flex-col items-start gap-8">
         <div className="cursor-target inline-flex items-center gap-3 px-4 py-2 rounded-full border border-deep-graphite/20 bg-white">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +29,7 @@ export default function WhatWeDo() {
             <path d="M16 12A4 4 0 1 1 8 12A4 4 0 0 1 16 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <span className="text-[12px] font-semibold tracking-widest uppercase text-deep-graphite">
-            CORE EXPERTISE
+            WHAT WE BUILD
           </span>
         </div>
         {/* Static Heading for Mobile & Tablet (No animation, optimized performance) */}
@@ -52,8 +59,74 @@ export default function WhatWeDo() {
         />
       </div>
 
-      {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8">
+      {/* ══════════════════════════════════════
+          MOBILE: Horizontal swipe cards
+      ══════════════════════════════════════ */}
+      <div className="md:hidden -mx-6 overflow-x-auto no-scrollbar">
+        <div className="flex gap-4 px-6 pb-1 snap-x snap-mandatory">
+
+          {[
+            {
+              label: "01 / PRODUCT STUDIO",
+              title: "Building Software\nThat Solves Problems",
+              desc: "We turn ideas into real products — from AI tools and SaaS platforms to developer utilities.",
+              tags: ["SaaS", "AI", "Products"],
+            },
+            {
+              label: "02 / WHAT WE BUILD",
+              title: "Web\nApplications",
+              desc: "Modern web applications designed for speed, usability, and scale.",
+              tags: ["React", "Next.js", "Web Apps"],
+            },
+            {
+              label: "03 / BUILDING IN PUBLIC",
+              title: "Ship.\nLearn.\nImprove.",
+              desc: "We launch quickly, gather feedback, and continuously improve every product.",
+              tags: ["Launch", "Feedback", "Growth"],
+            },
+            {
+              label: "04 / THE BEPEL ECOSYSTEM",
+              title: "One Brand.\nMany Products.",
+              desc: "Every tool we create lives under the Bepel ecosystem — a growing collection of useful software.",
+              tags: ["Vision", "Products", "Scale"],
+            },
+          ].map((card) => (
+            <div
+              key={card.label}
+              className="snap-start flex-none w-[80vw] max-w-[300px] rounded-[24px] border border-deep-graphite/10 bg-white p-6 flex flex-col gap-4 min-h-[340px]"
+            >
+              <div className="text-[11px] font-mono font-medium tracking-widest uppercase text-deep-graphite/50">
+                {card.label}
+              </div>
+              <h3 className="text-[22px] font-semibold leading-tight text-deep-graphite tracking-tight whitespace-pre-line flex-1">
+                {card.title}
+              </h3>
+              <p className="text-[13px] leading-relaxed text-deep-graphite/60">
+                {card.desc}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {card.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="px-2.5 py-1 rounded-xl border border-deep-graphite/12 text-[12px] font-medium text-deep-graphite"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-[10px] uppercase tracking-[0.2em] text-medium-gray-highlight/50 text-center mt-5 px-6 select-none">
+          Swipe to explore →
+        </p>
+      </div>
+
+      {/* ══════════════════════════════════════
+          DESKTOP: Bento Grid
+      ══════════════════════════════════════ */}
+      <div className="hidden md:grid md:grid-cols-5 gap-6 md:gap-8">
 
         {/* Card 1: Build Products (Col-span 3) */}
         <motion.div
@@ -70,25 +143,26 @@ export default function WhatWeDo() {
               alt="Build Products"
               fill
               draggable={false}
-              className="object-cover object-left-top "
+              sizes="(max-width: 768px) 60vw, (max-width: 1024px) 50vw, 40vw"
+              className="object-cover object-left-top"
             />
           </div>
 
           <div className="relative z-20 w-full sm:w-[70%] md:w-[60%] lg:w-[50%] flex flex-col items-start gap-4 h-full">
             <div className="text-[12px] font-mono font-medium tracking-widest uppercase text-deep-graphite/60 mb-2">
-              01 / PRODUCT LAB
+              01 / PRODUCT STUDIO
             </div>
             <h3 className="text-[40px] cursor-target md:text-[48px] font-semibold leading-tight text-deep-graphite tracking-tight">
-              Build Products
+              Building Software That Solves Problems
             </h3>
             <p className="text-[16px] md:text-[18px] leading-relaxed text-deep-graphite/70 mb-12">
-              We rapidly turn ideas into products, experiments, and launch-ready experiences.
+              We turn ideas into real products — from AI tools and SaaS platforms to developer utilities and experiments.
             </p>
 
             <div className="mt-auto flex flex-wrap gap-3">
-              <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Ideas</span>
-              <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Experiments</span>
-              <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Launch</span>
+              <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">SaaS</span>
+              <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">AI</span>
+              <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Products</span>
             </div>
           </div>
         </motion.div>
@@ -103,13 +177,13 @@ export default function WhatWeDo() {
         >
           <div className="flex flex-col items-start gap-4 mb-10 z-20 relative">
             <div className="text-[12px] font-mono font-medium tracking-widest uppercase text-deep-graphite/60 mb-2">
-              02 / CLIENT WORK
+              02 / WHAT WE BUILD
             </div>
             <h3 className="text-[32px] cursor-target md:text-[36px] font-semibold leading-tight text-deep-graphite tracking-tight">
               Web Applications
             </h3>
             <p className="text-[16px] md:text-[17px] leading-relaxed text-deep-graphite/70">
-              We help founders and businesses design and build modern web experiences.
+              Modern web applications designed for speed, usability, and scale.
             </p>
           </div>
 
@@ -119,7 +193,8 @@ export default function WhatWeDo() {
               alt="Web Applications Dashboard"
               fill
               draggable={false}
-              className="object-contain transition-transform "
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-contain transition-transform"
             />
           </div>
 
@@ -128,6 +203,7 @@ export default function WhatWeDo() {
             <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Next.js</span>
             <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Web Apps</span>
           </div>
+
         </motion.div>
 
         {/* Card 3: Ship Fast (Col-span 2) */}
@@ -140,13 +216,13 @@ export default function WhatWeDo() {
         >
           <div className="flex flex-col items-start gap-4 mb-10 z-20 relative">
             <div className="text-[12px] font-mono font-medium tracking-widest uppercase text-deep-graphite/60 mb-2">
-              03 / BUILD MODE
+              03 / BUILDING IN PUBLIC
             </div>
-            <h3 className="text-[32px]  cursor-target md:text-[36px] font-semibold leading-tight text-deep-graphite tracking-tight">
-              Ship Fast
+            <h3 className="text-[32px] cursor-target md:text-[36px] font-semibold leading-tight text-deep-graphite tracking-tight">
+              Ship. Learn. Improve.
             </h3>
             <p className="text-[16px] md:text-[17px] leading-relaxed text-deep-graphite/70">
-              Prototype quickly, iterate constantly, and move ideas into reality.
+              We launch quickly, gather feedback, and continuously improve every product.
             </p>
           </div>
 
@@ -156,14 +232,15 @@ export default function WhatWeDo() {
               alt="Ship Fast Dashboard"
               fill
               draggable={false}
-              className="object-contain object-top transition-transform "
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-contain object-top transition-transform"
             />
           </div>
 
           <div className="mt-auto flex flex-wrap gap-3 z-20 relative">
-            <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">MVP</span>
-            <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Prototype</span>
             <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Launch</span>
+            <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Feedback</span>
+            <span className="px-3 cursor-target py-1 rounded-xl border border-deep-graphite/15 text-[13px] font-medium text-deep-graphite bg-white/80 backdrop-blur-sm">Growth</span>
           </div>
         </motion.div>
 
@@ -188,13 +265,13 @@ export default function WhatWeDo() {
             </div>
 
             <div className="text-[12px] font-mono font-medium tracking-widest uppercase text-deep-graphite/60 mb-2">
-              04 / FUTURE
+              04 / THE BEPEL ECOSYSTEM
             </div>
             <h3 className="text-[32px] cursor-target md:text-[36px] font-semibold leading-tight text-deep-graphite tracking-tight">
-              Growing Bepel
+              One Brand. Many Products.
             </h3>
             <p className="text-[16px] md:text-[17px] leading-relaxed text-deep-graphite/70 mb-6">
-              Exploring products, software, and ambitious ideas for the future.
+              Every tool we create lives under the Bepel ecosystem — a growing collection of useful software.
             </p>
           </div>
 
@@ -204,7 +281,8 @@ export default function WhatWeDo() {
               alt="Growing Bepel Abstract"
               fill
               draggable={false}
-              className="object-cover object-bottom transition-transform "
+              sizes="(max-width: 768px) 100vw, 60vw"
+              className="object-cover object-bottom transition-transform"
             />
           </div>
 

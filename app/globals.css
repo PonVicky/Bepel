@@ -45,6 +45,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-canvas-white);
     color: var(--color-deep-graphite);
@@ -243,4 +247,20 @@
 
 .animate-infinite-scroll-y {
   animation: scroll-y 22s linear infinite;
+}
+
+/* Hide scrollbar for swipe containers */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-reveal,
+  .animate-infinite-scroll-y {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

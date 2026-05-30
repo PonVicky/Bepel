@@ -16,37 +16,54 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://bepel.in"),
 
-  title: "Bepel | Creative Builders",
+  title: {
+    default: "Bepel — Independent Product Studio",
+    template: "%s | Bepel",
+  },
 
   description:
-    "Bepel official website. Creative builders crafting innovative products and experiences.",
+    "Bepel is an independent product studio. We build useful software, AI tools, and digital products for real-world problems.",
 
   keywords: [
     "Bepel",
-    "bepl",
-    "beepel",
-    "Bepel official",
-    "Creative Builders",
+    "bepel.in",
+    "independent product studio",
+    "SaaS",
+    "AI tools",
+    "software products",
+    "web applications",
+    "Stroky",
+    "product studio",
+    "build in public",
   ],
+
+  alternates: {
+    canonical: "https://bepel.in",
+  },
 
   openGraph: {
     type: "website",
     url: "https://bepel.in",
     siteName: "Bepel",
-
-    title: "Bepel | Creative Builders",
-
+    title: "Bepel — Independent Product Studio",
     description:
-      "Creative builders crafting innovative products and experiences.",
-
+      "We build useful software, AI tools, and digital products for real-world problems.",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Bepel",
+        alt: "Bepel — Independent Product Studio",
       },
     ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Bepel — Independent Product Studio",
+    description:
+      "We build useful software, AI tools, and digital products for real-world problems.",
+    images: ["/og.png"],
   },
 
   icons: {
@@ -75,11 +92,25 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Bepel",
-              url: "https://bepel.in",
-              logo: "https://bepel.in/favicon.svg",
-              description: "Creative Builders",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://bepel.in/#organization",
+                  name: "Bepel",
+                  url: "https://bepel.in",
+                  logo: "https://bepel.in/favicon.svg",
+                  description:
+                    "Independent product studio building useful software, AI tools, and digital products.",
+                  foundingLocation: "Madurai, India",
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://bepel.in/#website",
+                  name: "Bepel",
+                  url: "https://bepel.in",
+                  publisher: { "@id": "https://bepel.in/#organization" },
+                },
+              ],
             }),
           }}
         />

@@ -11,6 +11,11 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrollPercent, setScrollPercent] = useState(0);
     const { scrollYProgress } = useScroll();
+    const navLinks = [
+        { label: "Products", href: "/products" },
+        { label: "About",    href: "/about"    },
+        { label: "Contact",  href: "/contact"  },
+    ];
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         setScrollPercent(Math.round(latest * 100));
@@ -34,6 +39,7 @@ export default function Navbar() {
                         alt="Bepel Logo"
                         width={36}
                         height={36}
+                        priority
                         className="w-[34px] h-[34px] md:w-[48px] md:h-[48px]"
                         style={{ height: "auto" }}
                     />
@@ -44,16 +50,19 @@ export default function Navbar() {
             <div className="relative md:absolute md:left-1/2 md:-translate-x-1/2 pointer-events-auto">
                 <div
                     className={`
-            relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden
-            ${isOpen ? "w-[256px] h-[540px] rounded-[32px] bg-[#D6D6D6] shadow-2xl py-4 px-1 flex flex-col" : "w-[188px] md:w-[240px] h-[40px] md:h-[48px] rounded-[20px] md:rounded-[24px] bg-black shadow-lg p-1"}
-          `}
+                        relative transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden
+                        ${isOpen
+                            ? "w-[256px] h-[540px] rounded-[32px] bg-[#D6D6D6] shadow-2xl py-4 px-1 flex flex-col"
+                            : "w-[188px] md:w-[240px] h-[40px] md:h-[48px] rounded-[20px] md:rounded-[24px] bg-black shadow-lg p-1"
+                        }
+                    `}
                 >
-                    {/* Internal Pill Bar (Always at top) */}
+                    {/* Internal Pill Bar (always at top) */}
                     <div
                         className={`
-              flex items-center justify-between shrink-0
-              ${isOpen ? "bg-black rounded-full py-1 mx-3 h-[48px] w-auto" : "h-full px-1 md:px-2 w-full"}
-            `}
+                            flex items-center justify-between shrink-0
+                            ${isOpen ? "bg-black rounded-full py-1 mx-3 h-[48px] w-auto" : "h-full px-1 md:px-2 w-full"}
+                        `}
                     >
                         {/* Menu/Close Toggle */}
                         <button
@@ -82,9 +91,8 @@ export default function Navbar() {
                             )}
                         </button>
 
-                        {/* Icons Section */}
+                        {/* Scroll % */}
                         <div className="flex items-center gap-1.5 md:gap-4 px-1 md:px-2">
-
                             <div className="bg-[#333333] px-1.5 md:px-3 py-0.5 md:py-1 rounded-full min-w-[34px] md:min-w-[46px] flex justify-center items-center">
                                 <span className="text-white text-[9px] md:text-[11px] font-bold tracking-wide">{scrollPercent}%</span>
                             </div>
@@ -94,18 +102,22 @@ export default function Navbar() {
                     {/* Expanded Content */}
                     <div
                         className={`
-              mt-8 transition-opacity duration-300 px-4 flex-1 flex flex-col pb-4
-              ${isOpen ? "opacity-100 delay-200" : "opacity-0 pointer-events-none hidden"}
-            `}
+                            mt-8 transition-opacity duration-300 px-4 flex-1 flex flex-col pb-4
+                            ${isOpen ? "opacity-100 delay-200" : "opacity-0 pointer-events-none hidden"}
+                        `}
                     >
-                        {/* Main Menu Section */}
+                        {/* Menu */}
                         <div className="space-y-2">
                             <p className="text-[10px] text-black/70 uppercase tracking-widest">Menu</p>
                             <ul className="space-y-1">
-                                {["PDP's", "Products", "Videos", "Our features"].map((item) => (
-                                    <li key={item}>
-                                        <Link href="#" className="text-xl font-medium text-black inline-block">
-                                            <LetterSwapForward label={item} staggerFrom="center" reverse={false} />
+                                {navLinks.map((item) => (
+                                    <li key={item.label}>
+                                        <Link
+                                            href={item.href}
+                                            className="text-xl font-medium text-black inline-block"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            <LetterSwapForward label={item.label} staggerFrom="center" reverse={false} />
                                         </Link>
                                     </li>
                                 ))}
@@ -114,7 +126,7 @@ export default function Navbar() {
 
                         <div className="my-6 border-t border-black/10"></div>
 
-                        {/* Other Section */}
+                        {/* Legal */}
                         <div className="space-y-2">
                             <p className="text-[10px] text-black/70 uppercase tracking-widest">Other</p>
                             <ul className="space-y-1">
@@ -128,7 +140,7 @@ export default function Navbar() {
                             </ul>
                         </div>
 
-                        {/* Social Media pushed to bottom */}
+                        {/* Social */}
                         <div className="mt-auto space-y-1">
                             <p className="text-[10px] text-black/70 uppercase tracking-widest">Social media</p>
                             <Link href="#" className="text-xs font-medium text-black inline-block">
@@ -139,11 +151,14 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Right: Actions */}
+            {/* Right: Contact button (desktop only) */}
             <div className="hidden md:flex items-center gap-4 pointer-events-auto">
-                <button className="bg-black hover:cursor-pointer text-white px-5 py-2.5 rounded-full text-xs font-bold hover:opacity-80 transition-opacity flex items-center justify-center min-w-[100px]">
+                <Link
+                    href="/contact"
+                    className="bg-black hover:cursor-pointer text-white px-5 py-2.5 rounded-full text-xs font-bold hover:opacity-80 transition-opacity flex items-center justify-center min-w-[100px]"
+                >
                     <LetterSwapForward label="Contact us" staggerDuration={0.02} />
-                </button>
+                </Link>
             </div>
         </nav>
     );

@@ -138,9 +138,9 @@ export default function StrokyProductPage() {
                 variants={slideUpVariant}
                 className="w-full"
               >
-                <div className="text-[12px] font-mono font-semibold tracking-[0.25em] text-deep-graphite/60 uppercase mb-4">
+                <h2 className="text-[12px] font-mono font-semibold tracking-[0.25em] text-deep-graphite/60 uppercase mb-4">
                   DIGITAL RHYTHM
-                </div>
+                </h2>
                 <p className="text-[20px] md:text-[24px] text-deep-graphite font-medium leading-relaxed max-w-3xl mb-16">
                   Stroky focuses on speed, rhythm, and consistency while keeping distractions away. Every element is refined to ensure your flow remains unbroken.
                 </p>
@@ -157,9 +157,9 @@ export default function StrokyProductPage() {
                   variants={slideUpVariant}
                   className="border-l-2 border-deep-graphite/20 pl-6 flex flex-col items-start"
                 >
-                  <h4 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
+                  <h3 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
                     Typing Tests
-                  </h4>
+                  </h3>
                   <p className="text-[14px] md:text-[15px] text-deep-graphite/70 leading-relaxed font-medium">
                     Precision-engineered challenges designed to push your boundaries.
                   </p>
@@ -173,9 +173,9 @@ export default function StrokyProductPage() {
                   variants={slideUpVariant}
                   className="border-l-2 border-deep-graphite/20 pl-6 flex flex-col items-start"
                 >
-                  <h4 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
+                  <h3 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
                     Minimal Interface
-                  </h4>
+                  </h3>
                   <p className="text-[14px] md:text-[15px] text-deep-graphite/70 leading-relaxed font-medium">
                     A distraction-free canvas where only you and the text exist.
                   </p>
@@ -189,9 +189,9 @@ export default function StrokyProductPage() {
                   variants={slideUpVariant}
                   className="border-l-2 border-deep-graphite/20 pl-6 flex flex-col items-start"
                 >
-                  <h4 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
+                  <h3 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
                     Real-time Metrics
-                  </h4>
+                  </h3>
                   <p className="text-[14px] md:text-[15px] text-deep-graphite/70 leading-relaxed font-medium">
                     Instant feedback on WPM, accuracy, and rhythmic consistency.
                   </p>
@@ -205,9 +205,9 @@ export default function StrokyProductPage() {
                   variants={slideUpVariant}
                   className="border-l-2 border-deep-graphite/20 pl-6 flex flex-col items-start"
                 >
-                  <h4 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
+                  <h3 className="font-mono font-bold text-[16px] md:text-[17px] text-deep-graphite tracking-wide mb-2">
                     Progress Tracking
-                  </h4>
+                  </h3>
                   <p className="text-[14px] md:text-[15px] text-deep-graphite/70 leading-relaxed font-medium">
                     Historical data visualized through elegant monochrome charts.
                   </p>
@@ -254,9 +254,9 @@ export default function StrokyProductPage() {
               variants={slideRightVariant}
               className="lg:col-span-5 flex flex-col items-start"
             >
-              <div className="text-[12px] font-mono font-semibold tracking-wider text-deep-graphite/60 uppercase mb-4">
+              <h2 className="text-[12px] font-mono font-semibold tracking-wider text-deep-graphite/60 uppercase mb-4">
                 Typing Interface
-              </div>
+              </h2>
               <p className="text-[16px] md:text-[18px] text-deep-graphite/70 font-medium leading-relaxed max-w-md">
                 Crafted with a focus on editorial typography, ensuring every keystroke feels intentional and every word has breathing room.
               </p>
@@ -281,9 +281,9 @@ export default function StrokyProductPage() {
               variants={slideLeftVariant}
               className="lg:col-span-5 order-last lg:order-first flex flex-col items-start"
             >
-              <div className="text-[12px] font-mono font-semibold tracking-wider text-deep-graphite/60 uppercase mb-4">
+              <h2 className="text-[12px] font-mono font-semibold tracking-wider text-deep-graphite/60 uppercase mb-4">
                 Statistics Dashboard
-              </div>
+              </h2>
               <p className="text-[16px] md:text-[18px] text-deep-graphite/70 font-medium leading-relaxed max-w-md">
                 Comprehensive post-session analytics that break down your performance into actionable insights, visualized with brutalist precision.
               </p>

@@ -1,19 +1,35 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
+
+const BASE_URL = "https://bepel.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://bepel.in',
+      url: BASE_URL,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
+      changeFrequency: "weekly",
+      priority: 1.0,
     },
-    // Add more pages below if you have them, for example:
-    // {
-    //   url: 'https://bepel.in/about',
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly',
-    //   priority: 0.8,
-    // },
-  ]
+    {
+      url: `${BASE_URL}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/products/stroky`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    // Uncomment when these pages go live:
+    // { url: `${BASE_URL}/products`,    lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
+    // { url: `${BASE_URL}/blog`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
+  ];
 }
